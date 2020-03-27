@@ -24,6 +24,8 @@ checkpoints, summary saved in "checkpoints/{timestamp}"
 streamlit run demo.py 
 ```
 try on: http://localhost:8501/
+
+
 <img src="demo.png" width="700px" title="demo" alt="demo"></img>
 
 
