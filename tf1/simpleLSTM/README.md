@@ -13,6 +13,10 @@ tensorflow-gpu==2.0.0  (tf1.x style, but tested on tf2.0)
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 ```
+
+## structure
+python generator -> tf iterator -> character embedding -> bidirectional lstm -> self-attentive layer -> softmax
+
 ## usage
 ### start training
 ```bash
