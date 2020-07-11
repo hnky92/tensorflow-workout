@@ -122,10 +122,10 @@ class Trainer(object):
                                                     output_types=output_types)
 
         # dataset settings
-        tf_dataset = tf_dataset.batch(batch_size)
-        tf_dataset = tf_dataset.shuffle(FLAGS.prefetch_size)
-        tf_dataset = tf_dataset.prefetch(FLAGS.prefetch_size)
         tf_dataset = tf_dataset.repeat(num_epoch)
+        tf_dataset = tf_dataset.shuffle(FLAGS.prefetch_size)
+        tf_dataset = tf_dataset.batch(batch_size)
+        tf_dataset = tf_dataset.prefetch(FLAGS.prefetch_size)
 
         # init iterator
         iterator = tf_dataset.make_initializable_iterator()
