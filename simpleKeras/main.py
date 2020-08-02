@@ -20,8 +20,8 @@ flags.DEFINE_integer('vocab_size', 4000, 'max vocab size to use')
 flags.DEFINE_integer('vec_dim', 256, 'word vector dimension')
 flags.DEFINE_integer('max_len', 128, 'max token sequence length of sentence')
 flags.DEFINE_integer('num_class', 2, 'number of classification class')
-flags.DEFINE_integer('num_train_data', 199001, 'number of train data')
-flags.DEFINE_integer('batch_size', 32, 'train batch size')
+flags.DEFINE_integer('num_train_data', 199000, 'number of train data')
+flags.DEFINE_integer('batch_size', 64, 'train batch size')
 
 
 def main(argv):

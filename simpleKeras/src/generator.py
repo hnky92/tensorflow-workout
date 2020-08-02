@@ -14,9 +14,10 @@ from src.utils import padding
 
 class ManageData(object):
 
-    def __init__(self, src_token_dict=None, filelist=None, max_len=128):
+    def __init__(self, src_token_dict=None, filelist=None, max_len=128, num_class=2):
         self.filelist = filelist
         self.max_len = max_len
+        self.num_class = num_class
 
         self.mecab = Mecab()
 
@@ -38,6 +39,11 @@ class ManageData(object):
 
         return sentence_list, label_list
 
+    def _to_onehot(self, label):
+        tmp = [0]*self.num_class
+        tmp[label] = 1
+        return tmp
+
 
     def generator(self):
         """ return generator yields preprocessed data
@@ -55,7 +61,7 @@ class ManageData(object):
 
                     if processed == None: continue
 
-                    yield (processed, label)
+                    yield (processed, self._to_onehot(label))
                 except:
                     continue
 
