@@ -16,7 +16,7 @@ class Trainer(object):
             try:
                 tf.config.experimental.set_virtual_device_configuration(
                     gpus[0],
-                    [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024*5)])
+                    [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=FLAGS.mem_limit)])
             except RuntimeError as e:
                 print(e)
 
@@ -60,6 +60,7 @@ class Trainer(object):
                                                  update_freq='epoch'),
                      keras.callbacks.ModelCheckpoint(os.path.join(savepath,'model'),
                                                      save_weights_only=True,
+                                                     save_best_only=True,
                                                      verbose=1)] 
 
         self.model.fit(self.tr_dataset, 

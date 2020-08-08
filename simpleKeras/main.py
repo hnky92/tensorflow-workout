@@ -23,6 +23,8 @@ flags.DEFINE_integer('num_class', 2, 'number of classification class')
 flags.DEFINE_integer('num_train_data', 199000, 'number of train data')
 flags.DEFINE_integer('batch_size', 64, 'train batch size')
 
+flags.DEFINE_integer('mem_limit', 1024*7, 'limit memory to use')
+
 
 def main(argv):
     """ select process to do """

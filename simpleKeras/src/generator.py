@@ -44,6 +44,12 @@ class ManageData(object):
         tmp[label] = 1
         return tmp
 
+    def make_input(self, sentence):
+        processed = self.preprocess(sentence)
+        processed = tokenlist2idlist(processed, self.token_dict)
+        processed = padding(processed, self.max_len) 
+
+        return processed
 
     def generator(self):
         """ return generator yields preprocessed data
@@ -55,10 +61,8 @@ class ManageData(object):
 
             for sentence, label in zip(sentences, labels):
                 try:
-                    processed = self.preprocess(sentence)
-                    processed = tokenlist2idlist(processed, self.token_dict)
-                    processed = padding(processed, self.max_len) 
-
+                    processed = self.make_input(sentence)
+                    
                     if processed == None: continue
 
                     yield (processed, self._to_onehot(label))
