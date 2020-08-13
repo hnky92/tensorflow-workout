@@ -20,7 +20,13 @@ class Trainer(object):
             except RuntimeError as e:
                 print(e)
 
-        self.model = LSTMModel()
+        self.model = LSTMModel(vocab_size = FLAGS.vocab_size, 
+                               vec_dim = FLAGS.vec_dim, 
+                               max_len = FLAGS.max_len, 
+                               num_class = FLAGS.num_class, 
+                               train = True, 
+                               src_token2id = FLAGS.src_token2id, 
+                               src_w2v = FLAGS.src_w2v)
 
         self.tr_dataset = self._make_dataset(FLAGS.src_train_data)
         self.vl_dataset = self._make_dataset(FLAGS.src_valid_data, repeat=False)
@@ -48,6 +54,7 @@ class Trainer(object):
     def train(self):
         savepath = os.path.join('checkpoint', datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
+
         self.model.compile(optimizer='Adam',
                            metrics=['accuracy'],
                            loss=keras.losses.CategoricalCrossentropy(from_logits=True,
@@ -58,7 +65,7 @@ class Trainer(object):
                      keras.callbacks.TensorBoard(log_dir=os.path.join(savepath,'logs'), 
                                                  write_graph=True, 
                                                  update_freq='epoch'),
-                     keras.callbacks.ModelCheckpoint(os.path.join(savepath,'model'),
+                     keras.callbacks.ModelCheckpoint(os.path.join(savepath,'model.h5'),
                                                      save_weights_only=True,
                                                      save_best_only=True,
                                                      verbose=1)] 

@@ -2,6 +2,8 @@ from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 
 class W2VTrainer():
+    """ train and save w2v model """
+
     def __init__(self, src_train_data):
 
         from src.generator import ManageData

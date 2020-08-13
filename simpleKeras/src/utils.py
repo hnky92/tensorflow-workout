@@ -1,6 +1,9 @@
 import json
 
 def padding(sequence, max_len=128, pad_token=0):
+    """
+    pad a sequence to max_len with pad_token
+    """
     if max_len < len(sequence):
         return sequence[:max_len]
 
@@ -10,6 +13,9 @@ def padding(sequence, max_len=128, pad_token=0):
 
 
 def tokenlist2idlist(tokenlist, token_dict):
+    """
+    change token list to token id list
+    """
     def map_token(token):
         nonlocal token_dict
 

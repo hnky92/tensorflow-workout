@@ -25,14 +25,14 @@ class ManageData(object):
             self.token_dict = load_token_id(src_token_dict)
 
 
-    def preprocess(self, sentence):
+    def _preprocess(self, sentence):
         try:
             return self.mecab.morphs(sentence)
         except:
             return None
 
 
-    def parse_data(self, filename):
+    def _parse_data(self, filename):
         dataset = pd.read_csv(filename, delimiter='\t', header=0)
         sentence_list = dataset['document']
         label_list = dataset['label']
@@ -45,7 +45,12 @@ class ManageData(object):
         return tmp
 
     def make_input(self, sentence):
-        processed = self.preprocess(sentence)
+        """
+        from input sentence. preprocess, map to id, padding
+        input sentence: '나는 학교에 간다'
+        output processed: [4,22,14,5,253,82,0,0,0, ...]
+        """
+        processed = self._preprocess(sentence)
         processed = tokenlist2idlist(processed, self.token_dict)
         processed = padding(processed, self.max_len) 
 
@@ -57,7 +62,7 @@ class ManageData(object):
         """
         for filename in self.filelist:
             # parse tsv
-            sentences, labels = self.parse_data(filename)
+            sentences, labels = self._parse_data(filename)
 
             for sentence, label in zip(sentences, labels):
                 try:

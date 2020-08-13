@@ -36,7 +36,6 @@ def main(argv):
         from src.utils import make_token_id
         make_token_id(FLAGS.src_token2id, FLAGS.src_w2v, FLAGS.vocab_size)
 
-
     if FLAGS.job == 'train':
         from src.trainer import Trainer
         Trainer().train()
