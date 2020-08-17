@@ -2,12 +2,19 @@
 
 ## prerequisites
 gensim==3.8.3
+
 konlpy==0.5.2
+
 mecab-python==1.0.0
+
 pybind11==2.5.0
+
 pysocks==1.7.1
+
 streamlit==0.65.0
+
 tensorflow-gpu==2.2.0
+
 tqdm==4.48.0
 
 ## structure
