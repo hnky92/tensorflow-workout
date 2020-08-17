@@ -1,4 +1,4 @@
-# simple Keras workout
+# simple Keras workout with pretrained w2v
 
 ## prerequisites
 gensim==3.8.3
