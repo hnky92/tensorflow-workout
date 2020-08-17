@@ -1,4 +1,4 @@
-# simple LSTM example with self-attentive layer (tf 1.x)
+# simple LSTM workout with self-attentive layer (tf 1.x)
 ## prerequisites
 python==3.x
 
