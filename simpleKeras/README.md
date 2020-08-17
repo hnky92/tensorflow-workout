@@ -18,7 +18,7 @@ tensorflow-gpu==2.2.0
 tqdm==4.48.0
 
 ## structure
-python generator -> token embedding -> bidirectional lstm -> softmax
+python generator -> tf dataset -> token embedding -> bidirectional lstm -> softmax
 
 initialize embedding layer with pretrained w2v
 
