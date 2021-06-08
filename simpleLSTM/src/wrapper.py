@@ -58,11 +58,9 @@ class Wrapper(object):
         features = self.preprocess(sentences)
         print(features)
 
-        list_pred = self.sess.run([self._pred],
+        return self.sess.run([self._pred],
                                   feed_dict={self.X:features["X"],
                                              self.X_len:features["seq_len"]})
-
-        return list_pred
 
 
 if __name__ == "__main__":

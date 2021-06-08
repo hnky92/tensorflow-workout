@@ -46,17 +46,11 @@ def make_token_id(src_token2id, src_w2v, vocab_size):
     model = KeyedVectors.load('data/w2v.model')
 
     # load w2v
-    tmp = []
-    for item in model.wv.vocab:
-        tmp.append((item, model.wv.vocab[item].count))
-
+    tmp = [(item, model.wv.vocab[item].count) for item in model.wv.vocab]
     tmp.sort(key=lambda el:el[1], reverse=True)
 
     # to dict
-    token_dict = dict()
-    for i, element in enumerate(tmp[:vocab_size]):
-        token_dict[element[0]] = i+2
-
+    token_dict = {element[0]: i+2 for i, element in enumerate(tmp[:vocab_size])}
     # UNK: 1
     # reserve 0 for PAD
     token_dict['UNK'] = 1

@@ -72,8 +72,7 @@ class SimpleLSTM():
                                     initializer=self.initializer,
                                     dtype=tf.float32)
 
-        embedded = tf.nn.embedding_lookup(embedding,X)
-        return embedded
+        return tf.nn.embedding_lookup(embedding,X)
 
 
     def self_attention(self,H):
