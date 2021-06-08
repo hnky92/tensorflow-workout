@@ -67,8 +67,8 @@ class ManageData(object):
             for sentence, label in zip(sentences, labels):
                 try:
                     processed = self.make_input(sentence)
-                    
-                    if processed == None: continue
+
+                    if processed is None: continue
 
                     yield (processed, self._to_onehot(label))
                 except:
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     md = ManageData('data/token2id.json',['data/ratings_train.txt'])
 
     gen = md.generator()
-    for i in range(100):
+    for _ in range(100):
         print(next(gen))
 
 
